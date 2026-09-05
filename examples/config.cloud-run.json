@@ -1,0 +1,11 @@
+{
+  "pairId": "principal",
+  "calendars": {
+    "A": { "calendarId": "a@example.test", "credentialsFile": "/secrets/A/credentials.json" },
+    "B": { "calendarId": "b@example.test", "credentialsFile": "/secrets/B/credentials.json" }
+  },
+  "storage": { "type": "firestore", "projectId": "YOUR_PROJECT_ID", "databaseId": "(default)" },
+  "intervalSeconds": 120,
+  "runBudgetSeconds": 45,
+  "allowWrites": false
+}
