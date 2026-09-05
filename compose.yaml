@@ -1,0 +1,25 @@
+services:
+  sync:
+    build: .
+    image: calendar-sync:local
+    command: [run]
+    restart: unless-stopped
+    init: true
+    read_only: true
+    stop_grace_period: 75s
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    environment:
+      SYNC_CONFIG: /secrets/config.json
+    volumes:
+      - sync-data:/data
+      - ./secrets:/secrets:ro
+    # No HTTP port is published by the dedicated-server worker.
+    healthcheck:
+      test: [CMD, node, dist/cli.js, status, --check]
+      interval: 120s
+      timeout: 15s
+      retries: 2
+      start_period: 10m
+volumes:
+  sync-data:

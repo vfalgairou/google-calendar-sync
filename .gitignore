@@ -1,0 +1,17 @@
+node_modules/
+dist/
+coverage/
+.env*
+!.env.example
+config.json
+secrets/
+data/
+*.sqlite*
+*.state.json
+*.credentials.json
+infra/.terraform/
+infra/*.tfstate*
+infra/*.tfplan
+infra/*.tfvars
+!infra/example.tfvars
+*.log

@@ -1,0 +1,29 @@
+{
+  "name": "google-calendar-sync",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "bin": { "calendar-sync": "dist/cli.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "test:firestore": "REQUIRE_FIRESTORE=1 tsx --test test/store.test.ts test/engine.test.ts",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
+    "@google-cloud/firestore": "^9.0.1",
+    "commander": "^14.0.0",
+    "google-auth-library": "^11.0.2",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
